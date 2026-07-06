@@ -16,14 +16,20 @@ const App = () => {
   const methods = useForm({
     resolver: zodResolver(formSchema),
     mode: 'onChange',
+
+    shouldUnregister: false,
   })
 
   const nextStep = () => {
-    setStep((prev) => prev + 1)
+    if (step < 3) {
+      setStep((prev) => prev + 1)
+    }
   }
 
   const prevStep = () => {
-    setStep((prev) => prev - 1)
+    if (step > 1) {
+      setStep((prev) => prev - 1)
+    }
   }
 
   const onSubmit = (data) => {
@@ -32,20 +38,60 @@ const App = () => {
   }
 
   if (success) {
-    return <Success />
+    return (
+      <div className="min-h-screen bg-black flex justify-center items-center px-5 py-8">
+        <Success />
+      </div>
+    )
   }
 
   return (
-    <div className="bg-black min-h-screen flex justify-center items-center flex-col px-5">
-      <h1 className="text-4xl font-bold text-transparent bg-linear-to-r from-red-500 to-purple-600 bg-clip-text mb-8">
-        Welcome Back!
+    <div className="min-h-screen bg-black flex flex-col justify-center items-center px-5">
+
+      {/* Heading */}
+
+      <h1 className="text-4xl font-bold text-transparent bg-linear-to-r from-cyan-400 to-purple-500 bg-clip-text mb-8">
+        Registration Wizard
       </h1>
 
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
+      {/* Progress */}
+
+      <div className="w-full max-w-md mb-8">
+
+        <div className="flex justify-between text-white text-sm mb-2">
+
+          <span>
+            Step {step} of 3
+          </span>
+
+          <span>
+            {Math.round((step / 3) * 100)}%
+          </span>
+
+        </div>
+
+        <div className="w-full h-3 rounded-full bg-gray-700 overflow-hidden">
+
+          <div
+            className="h-full bg-linear-to-r from-cyan-400 to-blue-600 transition-all duration-500"
+            style={{
+              width: `${(step / 3) * 100}%`,
+            }}
+          />
+
+        </div>
+
+      </div>
+
+      <form
+        onSubmit={methods.handleSubmit(onSubmit)}
+        className="w-full flex justify-center"
+      >
         {step === 1 && (
           <StepFirst
             register={methods.register}
             errors={methods.formState.errors}
+            trigger={methods.trigger}
             nextStep={nextStep}
           />
         )}
@@ -54,13 +100,17 @@ const App = () => {
           <StepSecond
             register={methods.register}
             errors={methods.formState.errors}
+            trigger={methods.trigger}
             nextStep={nextStep}
             prevStep={prevStep}
           />
         )}
 
         {step === 3 && (
-          <StepThird formData={methods.getValues()} prevStep={prevStep} />
+          <StepThird
+            formData={methods.getValues()}
+            prevStep={prevStep}
+          />
         )}
       </form>
     </div>
