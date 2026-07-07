@@ -1,16 +1,87 @@
-# React + Vite
+# Registration Wizard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern multi-step registration form built with React, React Hook Form, Zod, Tailwind CSS, and React Icons.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Multi-Step Registration Form
+- React Hook Form Integration
+- Zod Schema Validation
+- Real-time Form Validation
+- Show / Hide Password
+- Password Confirmation Validation
+- Review Before Submit
+- Success Screen
+- Glassmorphism UI
+- Responsive Design
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- Tailwind CSS
+- React Hook Form
+- Zod
+- React Icons
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Clone the repository
+
+```bash
+git clone https://github.com/Vikas123Rathore/react-registration-wizard
+```
+
+Go to project folder
+
+```bash
+cd registration-wizard
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run project
+
+```bash
+npm run dev
+```
+
+## Folder Structure
+
+```
+src
+ ├── components
+ │   ├── StepFirst.jsx
+ │   ├── StepSecond.jsx
+ │   ├── StepThird.jsx
+ │   └── Success.jsx
+ ├── schema
+ │   └── formSchema.js
+ ├── App.jsx
+ └── main.jsx
+```
+
+## Validation
+
+- First Name (Minimum 2 Characters)
+- Last Name (Minimum 2 Characters)
+- Date of Birth Required
+- Valid Email Address
+- Password Minimum 8 Characters
+- Confirm Password Must Match
+
+## Demo
+
+Live Demo:
+(Add your Vercel Link)
+
+GitHub:
+https://github.com/Vikas123Rathore/react-registration-wizard
+
+## Author
+
+Vikas Rathore
