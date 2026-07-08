@@ -77,7 +77,7 @@ src
 ## Demo
 
 Live Demo:
-(Add your Vercel Link)
+https://registration-wi.netlify.app/
 
 GitHub:
 https://github.com/Vikas123Rathore/react-registration-wizard
